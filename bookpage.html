@@ -37,7 +37,7 @@
         </nav>
 
         <div class="row" id="Book-page">
-            
+
         </div>
     </div>
     </div>
@@ -52,43 +52,40 @@
         .then(data => {
             data.forEach(val => {
                 show += `
-            <div class="col-md-4 text-center mb-4">
-                <img src="https://yale-press-us.imgix.net/covers/9780300228304.jpg?auto=format&w=400"
-                    alt="The King Never Smiles" class="book-cover-large">
+            <div class="col-12 col-md-4 text-center mb-4">
+        <img src="https://yale-press-us.imgix.net/covers/9780300228304.jpg?auto=format&w=400"
+            alt="${val.title}" class="book-cover-large">
+    </div>
+    <div class="col-12 col-md-8">
+        <span class="badge badge-category p-2 rounded mb-2">${val.category}</span>
+        <h1 class="display-5 fw-bold">${val.title}</h1>
+        <p class="lead text-muted">by ${val.author}</p>
+
+        <hr class="my-4">
+
+        <h4>Synopsis</h4>
+        <p>${val.description}</p>
+
+        <div class="mt-4">
+            <h5>Book Information</h5>
+            <div class="table-responsive"> <table class="table table-sm mt-3">
+                    <tr><td class="fw-bold" style="min-width: 120px;">Publisher:</td><td>${val.publisher}</td></tr>
+                    <tr><td class="fw-bold">ISBN:</td><td>${val.isbn}</td></tr>
+                    <tr><td class="fw-bold">Pages:</td><td>${val.pages}</td></tr>
+                </table>
             </div>
-            <div class="col-md-8">
-                <!-- hereeeee -->
-                 <div class="col-md-8">
-                        <span class="badge badge-category p-2 rounded">${val.category}</span>
-                        <h1 class="display-4 fw-bold">${val.title}</h1>
-                        <p class="lead text-muted">by ${val.author}</p>
+        </div>
 
-                        <hr class="my-4">
-
-                        <h4>Synopsis</h4>
-                        <p>${val.description}</p>
-
-                        <div class="mt-4">
-                            <h5>Book Information</h5>
-                            <table class="table table-sm mt-3">
-                                <tr><td class="fw-bold" style="width: 150px;">Publisher:</td><td>${val.publisher}</td></tr>
-                                <tr><td class="fw-bold">ISBN:</td><td>${val.isbn}</td></tr>
-                                <tr><td class="fw-bold">Pages:</td><td>${val.pages}</td></tr>
-                            </table>
-                        </div>
-                        <div class="mt-5">
-                            <button class="btn btn-primary btn-lg px-5 me-3" 
-                                onclick="location.href='${val.pdfPath}';">
-                                Read Now
-                            </button>
-                            <button class="btn btn-outline-secondary btn-lg px-5" 
-                                onclick="location.href='${val.pdfPath}';">
-                                Download
-                            </button>
-                        </div>
-                    </div>
-            </div>
-
+        <div class="mt-5 d-grid d-md-block gap-2"> <button class="btn btn-primary btn-lg px-5 me-md-3" 
+                onclick="location.href='${val.pdfPath}';">
+                Read Now
+            </button>
+            <button class="btn btn-outline-secondary btn-lg px-5" 
+                onclick="location.href='${val.pdfPath}';">
+                Download
+            </button>
+        </div>
+    </div>
             `
             });
             document.getElementById('Book-page').innerHTML = show;
