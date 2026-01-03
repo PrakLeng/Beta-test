@@ -1,0 +1,101 @@
+/* Custom Variables for consistency */
+:root {
+    --primary-color: #2c3e50;
+    --accent-color: #e67e22;
+    --bg-light: #f8f9fa;
+    --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    background-color: var(--bg-light);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--primary-color);
+}
+
+/* Navbar/Tap Styling */
+.tap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    gap: 20px;
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: 30px;
+}
+
+.tap .btn {
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+    padding: 8px 20px;
+}
+
+.tap .btn:hover {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+}
+
+/* Search Bar customization */
+.form-control {
+    border-radius: 20px;
+    border: 1px solid #ced4da;
+    padding-left: 15px;
+}
+
+/* Card Styling */
+.card {
+    width: 220px;
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: white;
+    box-shadow: var(--card-shadow);
+    height: 100%; /* Ensures all cards in a row are same height */
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-img-top {
+    height: 200px; /* Fixed height for consistency */
+    object-fit: contain; /* Keeps the book cover from looking stretched */
+    background-color: #f0f0f0; /* Light grey background for empty spaces */
+}
+
+.card-title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 0.95rem;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+/* Heading Styling */
+h1 {
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: var(--primary-color);
+}
+
+/* Book Page Specific Styles */
+/* Styling for the Primary button to match the "Library" theme */
+.btn-primary {
+    background-color: #2c3e50; /* Match your primary-color */
+    border: none;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #e67e22; /* Use your accent-color on hover */
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: ">";
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The King Never Smiles - P'rak Leng Library</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .book-cover-large {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .breadcrumb-item a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .badge-category {
+            background-color: var(--primary-color);
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-5">
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Book Details</li>
+            </ol>
+        </nav>
+
+        <div class="row" id="Book-page">
+            
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
+<iframe id="pdfViewer" style="width:100%; height:100vh;" frameborder="0"></iframe>
+<script>
+    var show = ``
+    fetch('https://prakleng.github.io/API-BOOK/data.json')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(val => {
+                show += `
+            <div class="col-md-4 text-center mb-4">
+                <img src="https://yale-press-us.imgix.net/covers/9780300228304.jpg?auto=format&w=400"
+                    alt="The King Never Smiles" class="book-cover-large">
+            </div>
+            <div class="col-md-8">
+                <!-- hereeeee -->
+                 <div class="col-md-8">
+                        <span class="badge badge-category p-2 rounded">${val.category}</span>
+                        <h1 class="display-4 fw-bold">${val.title}</h1>
+                        <p class="lead text-muted">by ${val.author}</p>
+
+                        <hr class="my-4">
+
+                        <h4>Synopsis</h4>
+                        <p>${val.description}</p>
+
+                        <div class="mt-4">
+                            <h5>Book Information</h5>
+                            <table class="table table-sm mt-3">
+                                <tr><td class="fw-bold" style="width: 150px;">Publisher:</td><td>${val.publisher}</td></tr>
+                                <tr><td class="fw-bold">ISBN:</td><td>${val.isbn}</td></tr>
+                                <tr><td class="fw-bold">Pages:</td><td>${val.pages}</td></tr>
+                            </table>
+                        </div>
+                        <div class="mt-5">
+                            <button class="btn btn-primary btn-lg px-5 me-3" 
+                                onclick="location.href='${val.pdfPath}';">
+                                Read Now
+                            </button>
+                            <button class="btn btn-outline-secondary btn-lg px-5" 
+                                onclick="location.href='${val.pdfPath}';">
+                                Download
+                            </button>
+                        </div>
+                    </div>
+            </div>
+
+            `
+            });
+            document.getElementById('Book-page').innerHTML = show;
+        })
+        .catch(error => console.error('Error fetching data:', error));
+
+</script>
