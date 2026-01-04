@@ -25,15 +25,12 @@ fetch('https://prakleng.github.io/API-BOOK/data.json')
     .then(data => {
         data.forEach(val => {
             show += `
-            <div class="col">
-                <div class="card h-100 shadow-sm border-0 book-card" type="button" 
-                    onclick="location.href='bookpage.html?id=${val.id}'"
-                    style="transition: transform 0.2s; cursor: pointer;">
+            <div class="col d-flex justify-content-center"> <div class="card h-100 shadow-sm border-0" type="button" 
+                    style="width: 100%; max-width: 300px;" 
+                    onclick="location.href='bookpage.html?id=${val.id}'">
                     
-                    <img src="${val.cover || 'https://via.placeholder.com/150x200?text=No+Cover'}" 
-                         class="card-img-top p-3" 
-                         alt="${val.title}" 
-                         style="height: 250px; object-fit: contain;">
+                    <img src="${val.cover}" class="card-img-top p-3" alt="${val.title}" 
+                         style="height: 350px; object-fit: contain;">
 
                     <div class="card-body text-center">
                         <h6 class="card-title mb-1 text-dark fw-bold">${val.title}</h6>
